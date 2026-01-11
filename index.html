@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="초보 개발자 Riot91의 유용한 앱 모음">
+    <title>Riot91 Apps - 개발자 포트폴리오</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* 헤더 */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s;
+        }
+        
+        header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            animation: fadeInUp 1s;
+        }
+        
+        /* 네비게이션 */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0;
+        }
+        
+        nav ul li a {
+            display: block;
+            padding: 20px 30px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        /* 컨테이너 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        /* 섹션 타이틀 */
+        .section-title {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #667eea;
+        }
+        
+        /* 소개 섹션 */
+        .intro {
+            background: #f8f9fa;
+            text-align: center;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .intro h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        
+        .intro p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        /* 앱 카드 */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .app-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        .app-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        .app-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .app-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .app-card ul {
+            text-align: left;
+            color: #666;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .app-card ul li {
+            margin-bottom: 8px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .btn-disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .btn-disabled:hover {
+            transform: none;
+        }
+        
+        /* 개인정보처리방침 */
+        .privacy-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .privacy-content h2 {
+            color: #667eea;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        
+        .privacy-content h3 {
+            color: #764ba2;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .privacy-content p, .privacy-content ul {
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .privacy-divider {
+            border: none;
+            border-top: 2px solid #e0e0e0;
+            margin: 30px 0;
+        }
+        
+        /* 문의 */
+        .contact {
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .contact-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .contact-item h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        /* 푸터 */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        /* 애니메이션 */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* 반응형 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            header p {
+                font-size: 1em;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li a {
+                padding: 15px;
+            }
+            
+            .section-title {
+                font-size: 1.8em;
+            }
+        }
+        
+        /* 섹션 보이기/숨기기 */
+        .section {
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header>
+        <h1>🚀 Riot91 Apps</h1>
+        <p>초보 개발자의 유용한 앱 모음</p>
+    </header>
+    
+    <!-- 네비게이션 -->
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showSection('home')">홈</a></li>
+            <li><a href="#" onclick="showSection('apps')">앱 목록</a></li>
+            <li><a href="#" onclick="showSection('privacy')">개인정보처리방침</a></li>
+            <li><a href="#" onclick="showSection('lotto-privacy')">로또앱 정책</a></li>
+            <li><a href="#" onclick="showSection('contact')">문의</a></li>
+        </ul>
+    </nav>
+    
+    <!-- 홈 섹션 -->
+    <section id="home" class="section active">
+        <div class="container">
+            <div class="intro">
+                <h2>👋 안녕하세요!</h2>
+                <p>초보 개발자 <strong>Riot91</strong>입니다.</p>
+                <p>일상에서 유용한 앱들을 만들고 있습니다.</p>
+                <br>
+                <h3>🎯 개발 목표</h3>
+                <p>✅ 사용자 친화적인 디자인</p>
+                <p>✅ 개인정보 보호 우선</p>
+                <p>✅ 지속적인 업데이트</p>
+            </div>
+            
+            <h2 class="section-title">📱 출시된 앱</h2>
+            
+            <div class="app-grid">
+                <div class="app-card">
+                    <div class="app-icon">🍀</div>
+                    <h3>로또 번호 추천</h3>
+                    <p>통계 기반 로또 번호 생성 앱</p>
+                    <ul>
+                        <li>1~1206회 데이터 분석</li>
+                        <li>4가지 생성 전략</li>
+                        <li>번호 저장 기능</li>
+                        <li>상세 통계 제공</li>
+                    </ul>
+                    <a href="#" class="btn">Google Play에서 보기</a>
+                </div>
+                
+                <div class="app-card">
+                    <div class="app-icon">🚀</div>
+                    <h3>다음 앱 준비중</h3>
+                    <p>새로운 앱을 개발하고 있습니다.</p>
+                    <p>곧 만나요!</p>
+                    <br><br><br>
+                    <a href="#" class="btn btn-disabled">준비중</a>
+                </div>
+                
+                <div class="app-card">
+                    <div class="app-icon">💡</div>
+                    <h3>아이디어 모집</h3>
+                    <p>어떤 앱이 필요하신가요?</p>
+                    <p>여러분의 의견을 보내주세요!</p>
+                    <br><br>
+                    <a href="#" onclick="showSection('contact')" class="btn">의견 보내기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 앱 목록 섹션 -->
+    <section id="apps" class="section">
+        <div class="container">
+            <h2 class="section-title">📱 전체 앱 목록</h2>
+            
+            <div class="app-grid">
+                <div class="app-card">
+                    <div class="app-icon">🍀</div>
+                    <h3>로또 번호 추천</h3>
+                    <p><strong>출시일:</strong> 2025년 1월</p>
+                    <p><strong>버전:</strong> 1.0</p>
+                    <p><strong>다운로드:</strong> Google Play</p>
+                    <hr style="margin: 20px 0;">
+                    <p>통계 기반으로 로또 번호를 추천하는 앱입니다.</p>
+                    <br>
+                    <a href="#" onclick="showSection('lotto-privacy')" class="btn">개인정보처리방침</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 개인정보처리방침 공통 -->
+    <section id="privacy" class="section">
+        <div class="container">
+            <div class="privacy-content">
+                <h1 style="color: #667eea; text-align: center; margin-bottom: 30px;">개인정보처리방침</h1>
+                
+                <p style="text-align: center; color: #999; margin-bottom: 40px;">
+                    최종 수정일: 2025년 1월 12일
+                </p>
+                
+                <p>
+                    <strong>Riot91 Apps</strong>(이하 "개발자")가 제공하는 모바일 애플리케이션들은 
+                    사용자의 개인정보를 중요시하며, 개인정보보호법을 준수합니다.
+                </p>
+                
+                <hr class="privacy-divider">
+                
+                <h2>1. 개인정보의 수집 및 이용</h2>
+                <p>
+                    개발자가 제공하는 앱들은 원칙적으로 <strong>개인정보를 수집하지 않습니다.</strong>
+                </p>
+                
+                <hr class="privacy-divider">
+                
+                <h2>2. 로컬 데이터 저장</h2>
+                <p>일부 앱에서 사용자가 생성한 데이터(예: 저장된 번호, 메모 등)는:</p>
+                <ul>
+                    <li>사용자의 기기에만 저장됩니다</li>
+                    <li>외부 서버로 전송되지 않습니다</li>
+                    <li>앱 삭제 시 함께 삭제됩니다</li>
+                    <li>사용자가 언제든 삭제할 수 있습니다</li>
+                </ul>
+                
+                <hr class="privacy-divider">
+                
+                <h2>3. 제3자 제공</h2>
+                <p>
+                    개발자는 사용자의 정보를 제3자에게 제공하지 않습니다.
+                </p>
+                
+                <hr class="privacy-divider">
+                
+                <h2>4. 인터넷 권한</h2>
+                <p>일부 앱은 다음 목적으로 인터넷 연결을 사용할 수 있습니다:</p>
+                <ul>
+                    <li>공개 통계 정보 표시</li>
+                    <li>앱 업데이트 확인</li>
+                    <li><strong>사용자 데이터는 전송하지 않습니다</strong></li>
+                </ul>
+                
+                <hr class="privacy-divider">
+                
+                <h2>5. 광고</h2>
+                <p>
+                    현재 개발자의 앱들은 광고를 포함하지 않습니다.<br>
+                    향후 광고가 포함될 경우 사전 고지하겠습니다.
+                </p>
+                
+                <hr class="privacy-divider">
+                
+                <h2>6. 어린이 개인정보 보호</h2>
+                <p>
+                    개발자의 앱들은 만 13세 미만 어린이를 대상으로 하지 않으며,
+                    어린이의 개인정보를 의도적으로 수집하지 않습니다.
+                </p>
+                
+                <hr class="privacy-divider">
+                
+                <h2>7. 보안</h2>
+                <p>
+                    사용자 데이터는 기기 내부에만 저장되며, 
+                    앱은 안전한 코드 관행을 따라 개발됩니다.
+                </p>
+                
+                <hr class="privacy-divider">
+                
+                <h2>8. 문의</h2>
+                <p>개인정보 관련 문의사항이 있으시면 아래로 연락주세요:</p>
+                <p>
+                    <strong>담당자:</strong> Riot91<br>
+                    <strong>이메일:</strong> <a href="mailto:your-email@example.com">your-email@example.com</a>
+                </p>
+                
+                <hr class="privacy-divider">
+                
+                <p style="text-align: center; color: #999;">
+                    앱별 구체적인 개인정보 처리 사항은 각 앱의 개인정보처리방침을 참조해주세요.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 로또 앱 개인정보처리방침 -->
+    <section id="lotto-privacy" class="section">
+        <div class="container">
+            <div class="privacy-content">
+                <h1 style="color: #667eea; text-align: center; margin-bottom: 30px;">
+                    로또 번호 추천 앱<br>개인정보처리방침
+                </h1>
+                
+                <p style="text-align: center; color: #999; margin-bottom: 40px;">
+                    앱 이름: 로또 번호 추천<br>
+                    패키지명: com.riot91.lotto<br>
+                    최종 수정일: 2025년 1월 12일
+                </p>
+                
+                <hr class="privacy-divider">
+                
+                <h2>1. 개인정보 수집</h2>
+                <p>
+                    본 앱은 <strong>어떠한 개인정보도 수집하지 않습니다.</strong>
+                </p>
+                
+                <hr class="privacy-divider">
+                
+                <h2>2. 저장되는 데이터</h2>
+                <p>사용자가 생성하고 저장한 로또 번호는:</p>
+                <ul>
+                    <li>사용자의 기기 내부에만 저장됩니다</li>
+                    <li>외부 서버로 전송되지 않습니다</li>
+                    <li>사용자가 '전체 삭제' 버튼으로 언제든 삭제 가능합니다</li>
+                    <li>앱 삭제 시 모든 데이터가 함께 삭제됩니다</li>
+                </ul>
+                
+                <h3>저장 내용:</h3>
+                <ul>
+                    <li>생성된 로또 번호 (1~45 중 6개)</li>
+                    <li>생성 전략 (통계/균형/트렌드/랜덤)</li>
+                    <li>생성 날짜 및 시간</li>
+                </ul>
+                
+                <hr class="privacy-divider">
+                
+                <h2>3. 권한</h2>
+                <p>본 앱이 요청하는 권한:</p>
+                <ul>
+                    <li><strong>인터넷 접근:</strong> 통계 정보 표시 목적</li>
+                    <li><strong>네트워크 상태 확인:</strong> 연결 상태 확인 목적</li>
+                </ul>
+                <p>위 권한은 사용자 데이터 전송에 사용되지 않습니다.</p>
+                
+                <hr class="privacy-divider">
+                
+                <h2>4. 제3자 서비스</h2>
+                <p>
+                    본 앱은 제3자 서비스를 사용하지 않습니다.<br>
+                    (광고, 분석 도구 등 없음)
+                </p>
+                
+                <hr class="privacy-divider">
+                
+                <h2>5. 데이터 보안</h2>
+                <ul>
+                    <li>모든 데이터는 기기 내부에만 저장</li>
+                    <li>암호화되지 않은 일반 저장 (개인정보 없으므로)</li>
+                    <li>외부 전송 없음</li>
+                </ul>
+                
+                <hr class="privacy-divider">
+                
+                <h2>6. 면책 사항</h2>
+                <p>본 앱은 로또 번호 추천 서비스를 제공하며:</p>
+                <ul>
+                    <li>당첨을 보장하지 않습니다</li>
+                    <li>통계적 참고 자료일 뿐입니다</li>
+                    <li>책임있는 복권 구매를 권장합니다</li>
+                </ul>
+                
+                <hr class="privacy-divider">
+                
+                <h2>7. 문의</h2>
+                <p>
+                    <strong>이메일:</strong> <a href="mailto:your-email@example.com">your-email@example.com</a>
+                </p>
+                
+                <p style="text-align: center; margin-top: 40px;">
+                    <a href="#" onclick="showSection('privacy')" class="btn">공통 개인정보처리방침 보기</a>
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 문의 섹션 -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="contact">
+                <h2 class="section-title">📧 문의하기</h2>
+                <p>개발자에게 연락하기</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>💬 문의 유형</h3>
+                        <p>• 버그 신고<br>
+                           • 기능 제안<br>
+                           • 일반 문의<br>
+                           • 협업 제안</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h3>📮 연락처</h3>
+                        <p><strong>이메일:</strong><br>
+                        <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+                        <p style="font-size: 0.9em; color: #999;">
+                            ※ 영업일 기준 1~3일 내 답변드립니다.
+                        </p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h3>⭐ 리뷰 남기기</h3>
+                        <p>앱이 마음에 드셨나요?<br>
+                        Google Play에서 별점과 리뷰를 남겨주세요!</p>
+                        <br>
+                        <a href="#" class="btn">리뷰 작성하기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 푸터 -->
+    <footer>
+        <p>© 2025 Riot91 Apps. All rights reserved.</p>
+        <p>Made with ❤️ by a beginner developer</p>
+    </footer>
+    
+    <script>
+        function showSection(sectionId) {
+            // 모든 섹션 숨기기
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // 선택한 섹션 보이기
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+            }
+            
+            // 페이지 맨 위로 스크롤
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            return false;
+        }
+    </script>
+</body>
+</html>
