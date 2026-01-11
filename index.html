@@ -18,7 +18,6 @@
             color: #333;
         }
         
-        /* 헤더 */
         header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -38,7 +37,6 @@
             animation: fadeInUp 1s;
         }
         
-        /* 네비게이션 */
         nav {
             background: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -72,14 +70,12 @@
             color: white;
         }
         
-        /* 컨테이너 */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 60px 20px;
         }
         
-        /* 섹션 타이틀 */
         .section-title {
             font-size: 2.5em;
             text-align: center;
@@ -87,7 +83,6 @@
             color: #667eea;
         }
         
-        /* 소개 섹션 */
         .intro {
             background: #f8f9fa;
             text-align: center;
@@ -108,7 +103,6 @@
             color: #555;
         }
         
-        /* 앱 카드 */
         .app-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -181,7 +175,6 @@
             transform: none;
         }
         
-        /* 개인정보처리방침 */
         .privacy-content {
             background: white;
             padding: 40px;
@@ -216,7 +209,6 @@
             margin: 30px 0;
         }
         
-        /* 문의 */
         .contact {
             background: linear-gradient(135deg, #667eea20, #764ba220);
             padding: 40px;
@@ -247,7 +239,6 @@
             margin-bottom: 15px;
         }
         
-        /* 푸터 */
         footer {
             background: #2c3e50;
             color: white;
@@ -260,7 +251,6 @@
             margin-bottom: 10px;
         }
         
-        /* 애니메이션 */
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -283,7 +273,6 @@
             }
         }
         
-        /* 반응형 */
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2em;
@@ -306,7 +295,6 @@
             }
         }
         
-        /* 섹션 보이기/숨기기 */
         .section {
             display: none;
         }
@@ -314,16 +302,27 @@
         .section.active {
             display: block;
         }
+
+        .note {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .note p {
+            color: #856404;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
-    <!-- 헤더 -->
     <header>
         <h1>🚀 Riot91 Apps</h1>
         <p>초보 개발자의 유용한 앱 모음</p>
     </header>
     
-    <!-- 네비게이션 -->
     <nav>
         <ul>
             <li><a href="#" onclick="showSection('home')">홈</a></li>
@@ -334,7 +333,6 @@
         </ul>
     </nav>
     
-    <!-- 홈 섹션 -->
     <section id="home" class="section active">
         <div class="container">
             <div class="intro">
@@ -361,7 +359,12 @@
                         <li>번호 저장 기능</li>
                         <li>상세 통계 제공</li>
                     </ul>
-                    <a href="#" class="btn">Google Play에서 보기</a>
+                    <!-- ⬇️ 여기! 플레이스토어 링크 입력하세요 -->
+                    <a href="https://play.google.com/store/apps/details?id=com.riot91.lotto" target="_blank" class="btn">Google Play에서 보기</a>
+                    
+                    <div class="note">
+                        <p>📝 <strong>아직 출시 전?</strong> 위 링크를 나중에 실제 플레이스토어 주소로 바꾸세요!</p>
+                    </div>
                 </div>
                 
                 <div class="app-card">
@@ -385,7 +388,6 @@
         </div>
     </section>
     
-    <!-- 앱 목록 섹션 -->
     <section id="apps" class="section">
         <div class="container">
             <h2 class="section-title">📱 전체 앱 목록</h2>
@@ -400,13 +402,14 @@
                     <hr style="margin: 20px 0;">
                     <p>통계 기반으로 로또 번호를 추천하는 앱입니다.</p>
                     <br>
-                    <a href="#" onclick="showSection('lotto-privacy')" class="btn">개인정보처리방침</a>
+                    <!-- ⬇️ 플레이스토어 링크 -->
+                    <a href="https://play.google.com/store/apps/details?id=com.riot91.lotto" target="_blank" class="btn" style="margin-right: 10px;">다운로드</a>
+                    <a href="#" onclick="showSection('lotto-privacy')" class="btn" style="background: #6c757d;">정책 보기</a>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- 개인정보처리방침 공통 -->
     <section id="privacy" class="section">
         <div class="container">
             <div class="privacy-content">
@@ -486,6 +489,7 @@
                 <p>개인정보 관련 문의사항이 있으시면 아래로 연락주세요:</p>
                 <p>
                     <strong>담당자:</strong> Riot91<br>
+                    <!-- ⬇️ 여기에 실제 이메일 입력하세요 -->
                     <strong>이메일:</strong> <a href="mailto:your-email@example.com">your-email@example.com</a>
                 </p>
                 
@@ -498,7 +502,6 @@
         </div>
     </section>
     
-    <!-- 로또 앱 개인정보처리방침 -->
     <section id="lotto-privacy" class="section">
         <div class="container">
             <div class="privacy-content">
@@ -578,6 +581,7 @@
                 
                 <h2>7. 문의</h2>
                 <p>
+                    <!-- ⬇️ 여기에도 실제 이메일 입력하세요 -->
                     <strong>이메일:</strong> <a href="mailto:your-email@example.com">your-email@example.com</a>
                 </p>
                 
@@ -588,7 +592,6 @@
         </div>
     </section>
     
-    <!-- 문의 섹션 -->
     <section id="contact" class="section">
         <div class="container">
             <div class="contact">
@@ -607,6 +610,7 @@
                     <div class="contact-item">
                         <h3>📮 연락처</h3>
                         <p><strong>이메일:</strong><br>
+                        <!-- ⬇️ 여기에도 실제 이메일 입력하세요 -->
                         <a href="mailto:your-email@example.com">your-email@example.com</a></p>
                         <p style="font-size: 0.9em; color: #999;">
                             ※ 영업일 기준 1~3일 내 답변드립니다.
@@ -618,14 +622,14 @@
                         <p>앱이 마음에 드셨나요?<br>
                         Google Play에서 별점과 리뷰를 남겨주세요!</p>
                         <br>
-                        <a href="#" class="btn">리뷰 작성하기</a>
+                        <!-- ⬇️ 플레이스토어 리뷰 링크 -->
+                        <a href="https://play.google.com/store/apps/details?id=com.riot91.lotto" target="_blank" class="btn">리뷰 작성하기</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- 푸터 -->
     <footer>
         <p>© 2025 Riot91 Apps. All rights reserved.</p>
         <p>Made with ❤️ by a beginner developer</p>
@@ -633,19 +637,16 @@
     
     <script>
         function showSection(sectionId) {
-            // 모든 섹션 숨기기
             const sections = document.querySelectorAll('.section');
             sections.forEach(section => {
                 section.classList.remove('active');
             });
             
-            // 선택한 섹션 보이기
             const selectedSection = document.getElementById(sectionId);
             if (selectedSection) {
                 selectedSection.classList.add('active');
             }
             
-            // 페이지 맨 위로 스크롤
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
             return false;
